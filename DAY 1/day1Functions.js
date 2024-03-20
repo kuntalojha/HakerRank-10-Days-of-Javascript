@@ -6,34 +6,37 @@ process.stdin.setEncoding('utf-8');
 let inputString = '';
 let currentLine = 0;
 
-process.stdin.on('data', inputStdin => {
-    inputString += inputStdin;
+process.stdin.on('data', (inputStdin) => {
+  inputString += inputStdin;
 });
 
-process.stdin.on('end', _ => {
-    inputString = inputString.trim().split('\n').map(string => {
-        return string.trim();
+process.stdin.on('end', (_) => {
+  inputString = inputString
+    .trim()
+    .split('\n')
+    .map((string) => {
+      return string.trim();
     });
-    
-    main();    
+
+  main();
 });
 
 function readLine() {
-    return inputString[currentLine++];
+  return inputString[currentLine++];
 }
 /*
  * Create the function factorial here
  */
-function factorial (n){
-    let factorialValue = 1;
-    for (let i = 1; i<=n; i++){
-        factorialValue = factorialValue * i;
-    }
-    return factorialValue;
+function factorial(n) {
+  let factorialValue = 1;
+  for (let i = 1; i <= n; i++) {
+    factorialValue = factorialValue * i;
+  }
+  return factorialValue;
 }
 
 function main() {
-    const n = +(readLine());
-    
-    console.log(factorial(n));
+  const n = +readLine();
+
+  console.log(factorial(n));
 }
